@@ -1,0 +1,11 @@
+org.assistments.connector.controller
+org.assistments.connector.domain
+org.assistments.connector.exception
+org.assistments.connector.service
+org.assistments.connector.service.impl
+org.assistments.connector.test
+org.assistments.connector.utility
+org.assistments.dao
+org.assistments.service.controller
+org.assistments.service.controller.impl
+org.assistments.service.domain

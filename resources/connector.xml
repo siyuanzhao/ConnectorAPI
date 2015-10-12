@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+       <!--  
+     <context:component-scan base-package="org.assistments.service"/>
+     <context:component-scan base-package="org.assistments.connector"/>
+    <aop:aspectj-autoproxy/>
+    <context:annotation-config />
+    
+    <import resource="classpath:/service.xml"/>
+     -->
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="org.postgresql.Driver"/>
+	    <!-- 
+		For deployment, use this because the you are talking to the db on the server 
+		 -->
+	<!-- 
+	    <property name="url" value="jdbc:postgresql://127.0.0.1/assistment_production"/>
+	     <property name="username" value="postgres"/>
+	    <property name="password" value="postgres"/>
+	 -->
+
+	    <property name="url" value="jdbc:postgresql://127.0.0.1/assistment_production"/>
+	     <property name="username" value="postgres"/>
+	    <property name="password" value="RuePierre1503"/>
+
+	<!-- 
+	    <property name="url" value="jdbc:postgresql://test1.assistments.org/assistment_production"/>
+
+	    <property name="username" value="postgres"/>
+	    <property name="password" value="RuePierre1503"/>
+	 -->
+	</bean>
+
+</beans>
