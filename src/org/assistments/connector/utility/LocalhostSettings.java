@@ -3,6 +3,7 @@ package org.assistments.connector.utility;
 public class LocalhostSettings {
 //	public static final String ASSISSTments_URL = "http://csta14-5.cs.wpi.edu/";
 	public static final String ASSISSTments_URL = "https://test1.assistments.org/";
+	public static final String DIRECT_URL= "http://csta14-5.cs.wpi.edu/direct";
 	public static final String LOCAL_ASSISTMENTS_URL = "http://localhost:3000/";
 
 	public static final String API_BASE = "http://test1.assistments.org:8080/api2";

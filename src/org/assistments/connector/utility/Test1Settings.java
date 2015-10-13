@@ -3,6 +3,7 @@ package org.assistments.connector.utility;
 public class Test1Settings {
 	public static final String ASSISSTments_URL = "https://test1.assistments.org/";
 
+	public static final String DIRECT_URL = "https://test1.assistments.org/direct";
 	public static final String API_BASE = "http://test1.assistments.org:8080/api2";
 	
 	public static final String LOGIN_URL = ASSISSTments_URL + "api2_helper/user_login";
