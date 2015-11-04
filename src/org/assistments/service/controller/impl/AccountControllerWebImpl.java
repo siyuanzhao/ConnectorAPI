@@ -13,6 +13,7 @@ import org.assistments.connector.exception.ReferenceNotFoundException;
 import org.assistments.connector.exception.WebAPIMalfunctionException;
 import org.assistments.connector.utility.Constants;
 import org.assistments.connector.utility.HttpRequestUtil;
+import org.assistments.connector.utility.LocalhostSettings;
 import org.assistments.connector.utility.Response;
 import org.assistments.dao.ConnectionFactory;
 import org.assistments.service.controller.AccountController;

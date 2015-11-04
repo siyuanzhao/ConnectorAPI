@@ -76,4 +76,10 @@ public interface AssignmentService {
 	 * @return false -- if the external assignment doesn't exist.
 	 */
 	public boolean isExternalAssignmentExists(String partnerExternalRef);
+	
+	/**
+	 * Update external assignment in bridge table
+	 * @param pta -- one instance from bridge table and it indicates one external assignment
+	 */
+	public void updateExternalAssignment(PartnerToAssistments pta);
 }

@@ -16,13 +16,13 @@ public abstract class AbstractPartnerToAssistmentsDAO implements PartnerToAssist
 		// partner_access_token = ? WHERE partner_external_reference=?
 		// AND external_reference_type_id=? AND api_partner_reference = ? AND
 		// assistments_external_reference = ?
-		String queryString = "UPDATE " + PartnerToAssistmentsLinks.TABLE_NAME + " SET "
-				+ PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN + "=?,  "
-				+ PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN + " = ?, " + PartnerToAssistments.NOTE + " = ? WHERE "
-				+ PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE + "=? AND "
-				+ PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID + "=? AND "
-				+ PartnerToAssistmentsLinks.API_PARTNER_REFERENCE + " = ? AND "
-				+ PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE + " = ?";
+		String queryString = "UPDATE " + PartnerToAssistments.TABLE_NAME + " SET "
+				+ PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN + "=?,  "
+				+ PartnerToAssistments.PARTNER_ACCESS_TOKEN + " = ?, " + PartnerToAssistments.NOTE + " = ?, "
+						+ PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE + "=?" + " WHERE "
+				+ PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID + "=? AND "
+				+ PartnerToAssistments.API_PARTNER_REFERENCE + " = ? AND "
+				+ PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE + " = ?";
 		try {
 			Connection conn = ConnectionFactory.getInstance().getConnection();
 			PreparedStatement pstm = conn.prepareStatement(queryString);

@@ -8,6 +8,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.assistments.service.controller.ErrorLogController;
+
 public class EdmodoHttpUtil {
 
 	public static String sendURLGet(String fullURL) {
@@ -77,6 +79,10 @@ public class EdmodoHttpUtil {
 			in.close();
 
 			checkResponse = response.toString();
+			if(connection.getResponseCode() >= 400) {
+				Exception e = new RuntimeException(checkResponse + "\n" + urlParameters);
+				ErrorLogController.addNewError(e, "Edmodo");
+			}
 
 		} catch (Exception e) {
 			throw new RuntimeException(e);

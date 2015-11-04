@@ -62,13 +62,13 @@ public class ExternalShareLinkDAO extends AbstractPartnerToAssistmentsDAO {
 		//INSERT INTO partner_to_assistments_links(api_partner_reference, 
 		//		external_reference_type_id, assistments_external_reference, partner_external_reference,
 		//		assistments_access_token) VALUES(?,?,?,?,?)
-		String queryString = "INSERT INTO "+PartnerToAssistmentsLinks.TABLE_NAME
-				+"("+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+", "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID
-				+", "+PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE+", "+
-				PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN+", "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+", "+
-				PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN+", "+
-				PartnerToAssistmentsLinks.NOTE+") VALUES(?,?,?,?,?,?,?)";
+		String queryString = "INSERT INTO "+PartnerToAssistments.TABLE_NAME
+				+"("+PartnerToAssistments.API_PARTNER_REFERENCE+", "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID
+				+", "+PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE+", "+
+				PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN+", "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+", "+
+				PartnerToAssistments.PARTNER_ACCESS_TOKEN+", "+
+				PartnerToAssistments.NOTE+") VALUES(?,?,?,?,?,?,?)";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		
 		PreparedStatement pstm = conn.prepareStatement(queryString);
@@ -103,10 +103,10 @@ public class ExternalShareLinkDAO extends AbstractPartnerToAssistmentsDAO {
 		List<PartnerToAssistments> shareLinks = new ArrayList<PartnerToAssistments>();
 		//SELECT * FROM partner_to_assistments_links WHERE partner_external_reference=? 
 		//		AND external_reference_type_id=? AND api_partner_reference = ?
-		String query = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-			PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+"=?"
-			+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=7 AND "
-			+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String query = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+			PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+"=?"
+			+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=7 AND "
+			+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(query);
@@ -118,13 +118,13 @@ public class ExternalShareLinkDAO extends AbstractPartnerToAssistmentsDAO {
 			count++;
 			PartnerToAssistments shareLink = new ExternalShareLink(partnerRef);
 			shareLink.setId(rs.getInt("id"));
-			shareLink.setApiPartnerReference(rs.getString(PartnerToAssistmentsLinks.API_PARTNER_REFERENCE));
-			shareLink.setExternalRefernceTypeId(rs.getInt(PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID));
-			shareLink.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE));
-			shareLink.setAssistmentsAccessToken(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN));
-			shareLink.setPartnerExternalReference(rs.getString(PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE));
-			shareLink.setPartnerAccessToken(rs.getString(PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN));
-			shareLink.setNote(rs.getString(PartnerToAssistmentsLinks.NOTE));				
+			shareLink.setApiPartnerReference(rs.getString(PartnerToAssistments.API_PARTNER_REFERENCE));
+			shareLink.setExternalRefernceTypeId(rs.getInt(PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID));
+			shareLink.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE));
+			shareLink.setAssistmentsAccessToken(rs.getString(PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN));
+			shareLink.setPartnerExternalReference(rs.getString(PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE));
+			shareLink.setPartnerAccessToken(rs.getString(PartnerToAssistments.PARTNER_ACCESS_TOKEN));
+			shareLink.setNote(rs.getString(PartnerToAssistments.NOTE));				
 			shareLinks.add(shareLink);
 		}
 		if(count == 0) {

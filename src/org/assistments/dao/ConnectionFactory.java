@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import org.assistments.connector.utility.Constants;
+import org.assistments.connector.utility.LocalhostSettings;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

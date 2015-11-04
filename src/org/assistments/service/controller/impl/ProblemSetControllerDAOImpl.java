@@ -44,6 +44,7 @@ public class ProblemSetControllerDAOImpl implements ProblemSetController {
 		jdbcTemplate = new JdbcTemplate(ds);
 	}
 	
+	@Override
 	public boolean isSkillBuilder(long problemSetId) {
 		String sql = "SELECT sections.type FROM sections "
 				+ "JOIN sequences on sections.id = sequences.head_section_id WHERE"
@@ -60,6 +61,7 @@ public class ProblemSetControllerDAOImpl implements ProblemSetController {
 		}
 	}
 	
+	@Override
 	public boolean isPseudoSkillBuilder(long problemSetId) {
 		ProblemSet ps = find(problemSetId);
 		String parameters = ps.getParameters();
@@ -71,6 +73,7 @@ public class ProblemSetControllerDAOImpl implements ProblemSetController {
 		}
 	}
 	
+	@Override
 	public long getPseudoSkillBuilderId(long problemSetId) {
 		long id = 0;
 		ProblemSet ps = find(problemSetId);
@@ -87,6 +90,7 @@ public class ProblemSetControllerDAOImpl implements ProblemSetController {
 	}
 	
 	
+	@Override
 	public List<Problem> findAllProblems(long problemSetId) {
 		String sql = "select * from problems where assistment_id IN "
 				+ "(select assistment_id from assistment_to_sequence_associations where sequence_id = ?)"
@@ -134,6 +138,7 @@ public class ProblemSetControllerDAOImpl implements ProblemSetController {
 		return list;
 	}
 
+	@Override
 	public ProblemSet find(long id){
 		ProblemSet ps = new ProblemSet();
 		try {
@@ -167,6 +172,7 @@ public class ProblemSetControllerDAOImpl implements ProblemSetController {
 		return ps;
 	}
 	
+	@Override
 	public ProblemSet findByAssignment(String assignmentRef) throws ReferenceNotFoundException {
 		
 		//first get problem set id from assignment reference

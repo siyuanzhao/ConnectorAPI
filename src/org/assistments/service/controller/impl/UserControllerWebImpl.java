@@ -23,6 +23,7 @@ public class UserControllerWebImpl implements UserController{
 		this.accessToken = accessToken;
 	}
 	
+	@Override
 	public User getUserProfile(String userRef) 
 			throws WebAPIMalfunctionException {		
 		String url = Constants.API_BASE + "/user/" + userRef;

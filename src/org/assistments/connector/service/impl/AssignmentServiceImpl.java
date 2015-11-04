@@ -78,7 +78,7 @@ public class AssignmentServiceImpl implements AssignmentService {
 		assignment.setPartnerAccessToken(partnerAccessToken);
 		assignment.setNote(note);
 		assignmentDAO.add(assignment);
-			
+		
 		return assignmentRef;
 	}
 
@@ -121,5 +121,10 @@ public class AssignmentServiceImpl implements AssignmentService {
 	@Override
 	public Assignment find(String assignmentRef) throws ReferenceNotFoundException {
 		return assignmentController.find(assignmentRef);
+	}
+
+	@Override
+	public void updateExternalAssignment(PartnerToAssistments pta) {
+		assignmentDAO.update(pta);
 	}
 }

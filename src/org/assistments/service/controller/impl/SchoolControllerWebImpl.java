@@ -35,6 +35,7 @@ public class SchoolControllerWebImpl implements SchoolController {
 		return r;
 	}
 	
+	@Override
 	public boolean assignUserToSchool(String userRef, String schoolRef) 
 			throws WebAPIMalfunctionException {
 		boolean b = false;

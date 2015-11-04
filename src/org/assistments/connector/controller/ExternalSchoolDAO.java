@@ -85,10 +85,10 @@ public class ExternalSchoolDAO extends AbstractPartnerToAssistmentsDAO {
 		
 		//SELECT * FROM partner_to_assistments_links WHERE partner_external_reference=? 
 		//		AND external_reference_type_id=? AND api_partner_reference = ?
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, partnerExternalRef);
@@ -118,13 +118,13 @@ public class ExternalSchoolDAO extends AbstractPartnerToAssistmentsDAO {
 		//INSERT INTO partner_to_assistments_links(api_partner_reference, 
 		//		external_reference_type_id, assistments_external_reference, partner_external_reference,
 		//		assistments_access_token) VALUES(?,?,?,?,?)
-		String queryString = "INSERT INTO "+PartnerToAssistmentsLinks.TABLE_NAME
-				+"("+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+", "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID
-				+", "+PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE+", "+
-				PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN+", "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+", "+
-				PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN+", "+
-				PartnerToAssistmentsLinks.NOTE+") VALUES(?,?,?,?,?,?,?)";
+		String queryString = "INSERT INTO "+PartnerToAssistments.TABLE_NAME
+				+"("+PartnerToAssistments.API_PARTNER_REFERENCE+", "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID
+				+", "+PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE+", "+
+				PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN+", "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+", "+
+				PartnerToAssistments.PARTNER_ACCESS_TOKEN+", "+
+				PartnerToAssistments.NOTE+") VALUES(?,?,?,?,?,?,?)";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, externalSchool.getApiPartnerReference());
@@ -151,10 +151,10 @@ public class ExternalSchoolDAO extends AbstractPartnerToAssistmentsDAO {
 			throws SQLException, ReferenceNotFoundException{
 		PartnerToAssistments school = new ExternalSchool(partnerRef);
 		
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, externalPartnerRef);
@@ -163,13 +163,13 @@ public class ExternalSchoolDAO extends AbstractPartnerToAssistmentsDAO {
 		ResultSet rs = pstm.executeQuery();
 
 		if (rs.next()) {
-			school.setApiPartnerReference(rs.getString(PartnerToAssistmentsLinks.API_PARTNER_REFERENCE));
-			school.setExternalRefernceTypeId(rs.getInt(PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID));
-			school.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE));
-			school.setAssistmentsAccessToken(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN));
-			school.setPartnerExternalReference(rs.getString(PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE));
-			school.setPartnerAccessToken(rs.getString(PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN));
-			school.setNote(rs.getString(PartnerToAssistmentsLinks.NOTE));
+			school.setApiPartnerReference(rs.getString(PartnerToAssistments.API_PARTNER_REFERENCE));
+			school.setExternalRefernceTypeId(rs.getInt(PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID));
+			school.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE));
+			school.setAssistmentsAccessToken(rs.getString(PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN));
+			school.setPartnerExternalReference(rs.getString(PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE));
+			school.setPartnerAccessToken(rs.getString(PartnerToAssistments.PARTNER_ACCESS_TOKEN));
+			school.setNote(rs.getString(PartnerToAssistments.NOTE));
 		} else {
 			throw new ReferenceNotFoundException(String.format("Cannot find ExternalSchool with %s = %s",
 					PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE, externalPartnerRef));

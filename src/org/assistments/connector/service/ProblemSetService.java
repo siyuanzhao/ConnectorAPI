@@ -22,6 +22,7 @@ public interface ProblemSetService extends ProblemSetController {
 	 * @param folderId -- folder id 
 	 * @return a JsonArray represents list of problem set under the given folder
 	 */
+	@Override
 	public JsonArray getProblemSetsByFolder(long folderId);
 	
 	/**
@@ -29,6 +30,7 @@ public interface ProblemSetService extends ProblemSetController {
 	 * @param folderIdList -- a list of folder ids
 	 * @return a List of maps which contains folder name and folder id
 	 */
+	@Override
 	public List<Map<String, String>> getFoldersByIds(List<Integer> folderIdList);
 	
 	/**
@@ -36,12 +38,16 @@ public interface ProblemSetService extends ProblemSetController {
 	 * @param folderId -- folder id 
 	 * @return a JsonArray represents list of problem set under the given folder
 	 */
+	@Override
 	public List<FolderItem> getFolderItemsByFolder(long folderId);
 	
+	@Override
 	public ProblemSection findBySectionId(long problemSectionId);
 	
+	@Override
 	public ProblemSet findByAssignment(String assignmentRef);
 	
+	@Override
 	public List<Map<String, String>> getSubFoldersByFolderId(int folderId);
 	
 }

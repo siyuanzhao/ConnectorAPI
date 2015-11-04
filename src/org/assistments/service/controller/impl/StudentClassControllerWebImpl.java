@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import org.assistments.connector.exception.WebAPIMalfunctionException;
 import org.assistments.connector.utility.Constants;
 import org.assistments.connector.utility.HttpRequestUtil;
+import org.assistments.connector.utility.LocalhostSettings;
 import org.assistments.connector.utility.Response;
 import org.assistments.dao.ConnectionFactory;
 import org.assistments.service.controller.StudentClassController;
@@ -48,6 +49,7 @@ public class StudentClassControllerWebImpl implements StudentClassController {
 		this.classDao = new JdbcClassDao(dataSource, new JdbcFolderUtil(dataSource));
 	}
 
+	@Override
 	public String createStudentClass(StudentClass studentClass
 			) throws WebAPIMalfunctionException {
 
@@ -69,6 +71,7 @@ public class StudentClassControllerWebImpl implements StudentClassController {
 
 	}
 
+	@Override
 	public boolean enrollStudent(String classRef, String studentRef
 			) throws WebAPIMalfunctionException {
 		boolean result = false;

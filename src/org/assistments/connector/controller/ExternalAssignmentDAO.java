@@ -97,10 +97,10 @@ public class ExternalAssignmentDAO extends AbstractPartnerToAssistmentsDAO {
 		boolean hasData = false;
 			//SELECT * FROM partner_to_assistments_links WHERE partner_external_reference=?"
 			//		+ " AND external_reference_type_id=? AND api_partner_reference = ?
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, partnerExternalRef);
@@ -129,13 +129,13 @@ public class ExternalAssignmentDAO extends AbstractPartnerToAssistmentsDAO {
 		//INSERT INTO partner_to_assistments_links(api_partner_reference, 
 		//		external_reference_type_id, assistments_external_reference, partner_external_reference,
 		//		assistments_access_token) VALUES(?,?,?,?,?)
-		String queryString = "INSERT INTO "+PartnerToAssistmentsLinks.TABLE_NAME
-				+"("+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+", "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID
-				+", "+PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE+", "+
-				PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN+", "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+", "+
-				PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN+", "+
-				PartnerToAssistmentsLinks.NOTE+") VALUES(?,?,?,?,?,?,?)";
+		String queryString = "INSERT INTO "+PartnerToAssistments.TABLE_NAME
+				+"("+PartnerToAssistments.API_PARTNER_REFERENCE+", "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID
+				+", "+PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE+", "+
+				PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN+", "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+", "+
+				PartnerToAssistments.PARTNER_ACCESS_TOKEN+", "+
+				PartnerToAssistments.NOTE+") VALUES(?,?,?,?,?,?,?)";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 
 		PreparedStatement pstm = conn.prepareStatement(queryString);
@@ -168,10 +168,10 @@ public class ExternalAssignmentDAO extends AbstractPartnerToAssistmentsDAO {
 			throws ReferenceNotFoundException, SQLException{
 		ExternalAssignment assignment = null;
 			
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, partnerExternalRef);
@@ -180,16 +180,16 @@ public class ExternalAssignmentDAO extends AbstractPartnerToAssistmentsDAO {
 		ResultSet rs = pstm.executeQuery();
 		if (rs.next()) {
 			assignment = new ExternalAssignment(partnerRef);
-			assignment.setApiPartnerReference(rs.getString(PartnerToAssistmentsLinks.API_PARTNER_REFERENCE));
-			assignment.setExternalRefernceTypeId(rs.getInt(PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID));
-			assignment.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE));
-			assignment.setAssistmentsAccessToken(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN));
-			assignment.setPartnerExternalReference(rs.getString(PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE));
-			assignment.setPartnerAccessToken(rs.getString(PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN));
-			assignment.setNote(rs.getString(PartnerToAssistmentsLinks.NOTE));
+			assignment.setApiPartnerReference(rs.getString(PartnerToAssistments.API_PARTNER_REFERENCE));
+			assignment.setExternalRefernceTypeId(rs.getInt(PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID));
+			assignment.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE));
+			assignment.setAssistmentsAccessToken(rs.getString(PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN));
+			assignment.setPartnerExternalReference(rs.getString(PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE));
+			assignment.setPartnerAccessToken(rs.getString(PartnerToAssistments.PARTNER_ACCESS_TOKEN));
+			assignment.setNote(rs.getString(PartnerToAssistments.NOTE));
 		} else {
 			String msg = String.format("Cannot find the assignment with %s = %s",
-					PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE, partnerExternalRef);
+					PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE, partnerExternalRef);
 			throw new ReferenceNotFoundException(msg);
 		}
 		if (pstm != null)
@@ -212,10 +212,10 @@ public class ExternalAssignmentDAO extends AbstractPartnerToAssistmentsDAO {
 		ExternalAssignment assignment = null;
 
 
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, externalRef);
@@ -224,16 +224,16 @@ public class ExternalAssignmentDAO extends AbstractPartnerToAssistmentsDAO {
 		ResultSet rs = pstm.executeQuery();
 		if (rs.next()) {
 			assignment = new ExternalAssignment(partnerRef);
-			assignment.setApiPartnerReference(rs.getString(PartnerToAssistmentsLinks.API_PARTNER_REFERENCE));
-			assignment.setExternalRefernceTypeId(rs.getInt(PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID));
-			assignment.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE));
-			assignment.setAssistmentsAccessToken(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN));
-			assignment.setPartnerExternalReference(rs.getString(PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE));
-			assignment.setPartnerAccessToken(rs.getString(PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN));
-			assignment.setNote(rs.getString(PartnerToAssistmentsLinks.NOTE));
+			assignment.setApiPartnerReference(rs.getString(PartnerToAssistments.API_PARTNER_REFERENCE));
+			assignment.setExternalRefernceTypeId(rs.getInt(PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID));
+			assignment.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE));
+			assignment.setAssistmentsAccessToken(rs.getString(PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN));
+			assignment.setPartnerExternalReference(rs.getString(PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE));
+			assignment.setPartnerAccessToken(rs.getString(PartnerToAssistments.PARTNER_ACCESS_TOKEN));
+			assignment.setNote(rs.getString(PartnerToAssistments.NOTE));
 		} else {
 			String msg = String.format("Cannot find the assignment with %s = %s",
-					PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE, externalRef);
+					PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE, externalRef);
 			throw new ReferenceNotFoundException(msg);
 		}
 		if(rs != null) {

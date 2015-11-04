@@ -100,10 +100,10 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 		boolean hasData = false;
 		//SELECT * FROM partner_to_assistments_links WHERE partner_external_reference=? 
 		//		AND external_reference_type_id=? AND api_partner_reference = ?
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, partnerExternalRef);
@@ -131,10 +131,10 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 		try {
 			//SELECT * FROM partner_to_assistments_links WHERE partner_external_reference=? 
 			//		AND external_reference_type_id=? AND api_partner_reference = ?
-			String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-					PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+"=?"
-					+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-					+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+			String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+					PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+"=?"
+					+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+					+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 			Connection conn = ConnectionFactory.getInstance().getConnection();
 			PreparedStatement pstm = conn.prepareStatement(queryString);
 			pstm.setString(1, partnerExternalRef);
@@ -175,13 +175,13 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 		//INSERT INTO partner_to_assistments_links(api_partner_reference, 
 		//		external_reference_type_id, assistments_external_reference, partner_external_reference,
 		//		assistments_access_token) VALUES(?,?,?,?,?)
-		String queryString = "INSERT INTO "+PartnerToAssistmentsLinks.TABLE_NAME
-				+"("+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+", "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID
-				+", "+PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE+", "+
-				PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN+", "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+", "+
-				PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN+", "+
-				PartnerToAssistmentsLinks.NOTE+") VALUES(?,?,?,?,?,?,?)";
+		String queryString = "INSERT INTO "+PartnerToAssistments.TABLE_NAME
+				+"("+PartnerToAssistments.API_PARTNER_REFERENCE+", "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID
+				+", "+PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE+", "+
+				PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN+", "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+", "+
+				PartnerToAssistments.PARTNER_ACCESS_TOKEN+", "+
+				PartnerToAssistments.NOTE+") VALUES(?,?,?,?,?,?,?)";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, externalClass.getApiPartnerReference());
@@ -210,10 +210,10 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 
 		//SELECT * FROM partner_to_assistments_links WHERE assistments_access_token=? 
 		//		AND external_reference_type_id=? AND api_partner_reference = ?
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, accessToken);
@@ -224,13 +224,13 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 		while(rs.next()) {
 			PartnerToAssistments studentClass = new ExternalStudentClassSection(partnerRef);
 			studentClass.setId(rs.getInt("id"));
-			studentClass.setApiPartnerReference(rs.getString(PartnerToAssistmentsLinks.API_PARTNER_REFERENCE));
-			studentClass.setExternalRefernceTypeId(rs.getInt(PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID));
-			studentClass.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE));
-			studentClass.setAssistmentsAccessToken(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN));
-			studentClass.setPartnerExternalReference(rs.getString(PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE));
-			studentClass.setPartnerAccessToken(rs.getString(PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN));
-			studentClass.setNote(rs.getString(PartnerToAssistmentsLinks.NOTE));
+			studentClass.setApiPartnerReference(rs.getString(PartnerToAssistments.API_PARTNER_REFERENCE));
+			studentClass.setExternalRefernceTypeId(rs.getInt(PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID));
+			studentClass.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE));
+			studentClass.setAssistmentsAccessToken(rs.getString(PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN));
+			studentClass.setPartnerExternalReference(rs.getString(PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE));
+			studentClass.setPartnerAccessToken(rs.getString(PartnerToAssistments.PARTNER_ACCESS_TOKEN));
+			studentClass.setNote(rs.getString(PartnerToAssistments.NOTE));
 			list.add(studentClass);
 		} 
 		if(list.size() == 0) {
@@ -250,10 +250,10 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 		List<PartnerToAssistments> list = new ArrayList<PartnerToAssistments>();
 		//SELECT * FROM partner_to_assistments_links WHERE partner_external_reference=?"
 		//		+ " AND external_reference_type_id=? AND api_partner_reference = ?
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, partnerExternalRef);
@@ -264,13 +264,13 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 		while (rs.next()) {
 			PartnerToAssistments studentClass = new ExternalStudentClassSection(partnerRef);
 			studentClass.setId(rs.getInt("id"));
-			studentClass.setApiPartnerReference(rs.getString(PartnerToAssistmentsLinks.API_PARTNER_REFERENCE));
-			studentClass.setExternalRefernceTypeId(rs.getInt(PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID));
-			studentClass.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE));
-			studentClass.setAssistmentsAccessToken(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN));
-			studentClass.setPartnerExternalReference(rs.getString(PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE));
-			studentClass.setPartnerAccessToken(rs.getString(PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN));
-			studentClass.setNote(rs.getString(PartnerToAssistmentsLinks.NOTE));
+			studentClass.setApiPartnerReference(rs.getString(PartnerToAssistments.API_PARTNER_REFERENCE));
+			studentClass.setExternalRefernceTypeId(rs.getInt(PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID));
+			studentClass.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE));
+			studentClass.setAssistmentsAccessToken(rs.getString(PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN));
+			studentClass.setPartnerExternalReference(rs.getString(PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE));
+			studentClass.setPartnerAccessToken(rs.getString(PartnerToAssistments.PARTNER_ACCESS_TOKEN));
+			studentClass.setNote(rs.getString(PartnerToAssistments.NOTE));
 			list.add(studentClass);
 		} 
 		if(list.size() == 0){
@@ -291,10 +291,10 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 
 		//SELECT * FROM partner_to_assistments_links WHERE assistments_external_reference=?"
 		//		+ " AND external_reference_type_id=? AND api_partner_reference = ?
-		String queryString = "SELECT * FROM "+PartnerToAssistmentsLinks.TABLE_NAME+" WHERE "+
-				PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE+"=?"
-				+ " AND "+PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
-				+PartnerToAssistmentsLinks.API_PARTNER_REFERENCE+" = ?";
+		String queryString = "SELECT * FROM "+PartnerToAssistments.TABLE_NAME+" WHERE "+
+				PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE+"=?"
+				+ " AND "+PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID+"=? AND "
+				+PartnerToAssistments.API_PARTNER_REFERENCE+" = ?";
 		Connection conn = ConnectionFactory.getInstance().getConnection();
 		PreparedStatement pstm = conn.prepareStatement(queryString);
 		pstm.setString(1, externalRef);
@@ -304,13 +304,13 @@ public class ExternalStudentClassSectionDAO extends AbstractPartnerToAssistments
 		while (rs.next()) {
 			PartnerToAssistments studentClass = new ExternalStudentClassSection(partnerRef);
 			studentClass.setId(rs.getInt("id"));
-			studentClass.setApiPartnerReference(rs.getString(PartnerToAssistmentsLinks.API_PARTNER_REFERENCE));
-			studentClass.setExternalRefernceTypeId(rs.getInt(PartnerToAssistmentsLinks.EXTERNAL_REFERENCE_TYPE_ID));
-			studentClass.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_EXTERNAL_REFERENCE));
-			studentClass.setAssistmentsAccessToken(rs.getString(PartnerToAssistmentsLinks.ASSISTMENTS_ACCESS_TOKEN));
-			studentClass.setPartnerExternalReference(rs.getString(PartnerToAssistmentsLinks.PARTNER_EXTERNAL_REFERENCE));
-			studentClass.setPartnerAccessToken(rs.getString(PartnerToAssistmentsLinks.PARTNER_ACCESS_TOKEN));
-			studentClass.setNote(rs.getString(PartnerToAssistmentsLinks.NOTE));
+			studentClass.setApiPartnerReference(rs.getString(PartnerToAssistments.API_PARTNER_REFERENCE));
+			studentClass.setExternalRefernceTypeId(rs.getInt(PartnerToAssistments.EXTERNAL_REFERENCE_TYPE_ID));
+			studentClass.setAssistmentsExternalRefernce(rs.getString(PartnerToAssistments.ASSISTMENTS_EXTERNAL_REFERENCE));
+			studentClass.setAssistmentsAccessToken(rs.getString(PartnerToAssistments.ASSISTMENTS_ACCESS_TOKEN));
+			studentClass.setPartnerExternalReference(rs.getString(PartnerToAssistments.PARTNER_EXTERNAL_REFERENCE));
+			studentClass.setPartnerAccessToken(rs.getString(PartnerToAssistments.PARTNER_ACCESS_TOKEN));
+			studentClass.setNote(rs.getString(PartnerToAssistments.NOTE));
 			list.add(studentClass);
 		} 
 		if(list.size() == 0) {

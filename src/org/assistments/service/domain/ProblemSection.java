@@ -11,6 +11,7 @@ public class ProblemSection {
 		IfThenElseSection("IfThenElseSection"),
 		ChooseConditionSection("ChooseConditionSection"),
 		MasterySection("MasterySection"),
+		RandomChildOrderSection("RandomChildOrderSection"),
 		LinearMasterySection("LinearMasterySection");
 		
 		String name;

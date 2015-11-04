@@ -17,7 +17,6 @@ import org.assistments.service.domain.ProblemSet;
 import org.assistments.service.domain.ShareLink;
 import org.assistments.service.domain.User;
 import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
