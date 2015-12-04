@@ -1,6 +1,6 @@
 package org.assistments.connector.utility;
 
-public class Constants extends  LocalhostSettings {		
+public class Constants extends  ProductionSettings {		
 	public static final String TEACHER_ROLE = "teacher";
 	public static final String STUDENT_ROLE = "student";
 	

@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 
 import org.assistments.connector.utility.Constants;
-import org.assistments.connector.utility.LocalhostSettings;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,6 +22,7 @@ public class ConnectionFactory {
 	//private InputStream input = null;
 	
 	private static ConnectionFactory connectionFactory = null;
+	private static Connection conn = null;
 	
 	private static DataSource ds = null;
 	
@@ -43,17 +43,31 @@ public class ConnectionFactory {
         }
     }
 	
-    public Connection getConnection() throws SQLException {
-        Connection conn = null;
-        conn = DriverManager.getConnection(url, dbuser, dbpassword);
+    public synchronized Connection getConnection() throws SQLException {
+    	if(conn == null || conn.isClosed()) {
+    		conn = DriverManager.getConnection(url, dbuser, dbpassword);
+    	}
         return conn;
     }
     
-    public static ConnectionFactory getInstance() {
-        if (connectionFactory == null) {
-            connectionFactory = new ConnectionFactory();
-        }
+    public synchronized static ConnectionFactory getInstance() {
+		if (connectionFactory == null) {
+			connectionFactory = new ConnectionFactory();
+		}
         return connectionFactory;
+    }
+    
+    public static void closeConnection() {
+		if (conn != null) {
+			try {
+				conn.close();
+				conn = null;
+			} catch (SQLException e) {
+
+			}
+		}
+		ds = null;
+		connectionFactory = null;
     }
     
     public static Connection getDBConnection() throws SQLException {

@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.assistments.connector.domain.ExternalAssignment;
 import org.assistments.connector.domain.PartnerToAssistments;
-import org.assistments.connector.domain.PartnerToAssistmentsLinks;
 import org.assistments.connector.domain.PartnerToAssistments.ColumnNames;
 import org.assistments.connector.exception.ReferenceNotFoundException;
 import org.assistments.connector.utility.Constants;

@@ -51,7 +51,12 @@ public interface AssignmentService {
 	 */
 	public String getAssignment(String assignmentRef, String onExit);
 	
-	public String getAssignment(String assignmentRef, String onExit, String logoUrl, String whiteLabeled, String accountName);
+	/**
+	 * Get all class assignments for a class
+	 * @param classRef -- external reference for a class from ASSISTments
+	 * @return a list of class assignments
+	 */
+	public List<org.assistments.service.domain.Assignment> getClassAssignments(String classRef);
 	
 	/**
 	 * Find a certain external assignment based on column name and value 

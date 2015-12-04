@@ -24,22 +24,22 @@
 	    <!-- 
 		For deployment, use this because the you are talking to the db on the server 
 		 -->
-<!-- 
+
 	    <property name="url" value="jdbc:postgresql://127.0.0.1/assistment_production"/>
 	     <property name="username" value="postgres"/>
 	    <property name="password" value="postgres"/>
-  -->
-<!-- 
+	    
+<!--  
 	    <property name="url" value="jdbc:postgresql://127.0.0.1/assistment_production"/>
 	     <property name="username" value="postgres"/>
 	    <property name="password" value="RuePierre1503"/>
- -->
-
+-->
+<!-- 
 	    <property name="url" value="jdbc:postgresql://test1.assistments.org/assistment_production"/>
 
 	    <property name="username" value="postgres"/>
 	    <property name="password" value="RuePierre1503"/>
-
+ -->
 	</bean>
 
 </beans>
